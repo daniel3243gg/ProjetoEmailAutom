@@ -10,11 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emails = $_POST["emails"];
     $template = $_POST["template"];
 
-    
     $mail = new PHPMailer();
 
     $mail->isSMTP();
-
 
     $mail->Host = 'smtp.gmail.com';
 
@@ -36,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->setFrom('daniew600brandao@gmail.com', 'Daniel PHP7');
 
     //Set who the message is to be sent to
-    $mail->addAddress("$email", 'Progamando');
     
     //Set the subject line
     $mail->Subject = 'test class';
@@ -51,15 +48,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->addAttachment('images/phpmailer_mini.png');
     
     //send the message, check for errors
-    if (!$mail->send()) {
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        echo 'Message sent!';
+    foreach ($emails as $email) {
+        $mail->clearAddresses(); // Limpa os destinatários anteriores
+        $mail->addAddress($email, 'Progamando');
 
+        // Envie o e-mail, verificando erros
+        if (!$mail->send()) {
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message sent to ' . $email . '!';
+        }
     }
-
-
-
 }
 
 ?>
