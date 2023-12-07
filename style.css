@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #666;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #3498db;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+
+input, select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.caixa-email {
+    width: 600;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.caixa-email label, .caixa-email input {
+    display: flex;
+    margin-bottom: 10px;
+    margin-right: 90px;
+}
+
+.caixa-email input {
+    width: calc(70% - 20px);
+    margin-right: 5px; /* Adiciona um espaço à direita do input */
+}
+
+.plus {
+    position: absolute;
+    right: 25px;
+    top: 30px;
+}
+
+.remover {
+    position: absolute;
+    right: -25px;
+    top: 30px;
+    background-color: #e74c3c; /* Vermelho */
+}
