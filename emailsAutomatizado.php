@@ -8,6 +8,10 @@ require 'vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emails = $_POST["emails"];
+    $emailuser = $_POST["emailuser"];
+    $senhagmail = $_POST["senhagmail"];
+    $nomegmail = $_POST["nomenogmail"];
+    $tituloemail = $_POST["tituloemail"];
     $template = $_POST["template"];
 
     $mail = new PHPMailer();
@@ -24,19 +28,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->SMTPAuth = true;
     
     //Username to use for SMTP authentication - use full email address for gmail
-    $mail->Username = 'daniew600brandao@gmail.com';
+    $mail->Username = $emailuser;
     
     //Password to use for SMTP authentication
-    $mail->Password = "mkfu lkdv dsmh ijqg";
+    $mail->Password = $senhagmail;
     
 
     //Do not use user-submitted addresses in here
-    $mail->setFrom('daniew600brandao@gmail.com', 'Daniel PHP7');
+    $mail->setFrom($emailuser, $nomegmail);
 
     //Set who the message is to be sent to
     
     //Set the subject line
-    $mail->Subject = 'test class';
+    $mail->Subject = $tituloemail;
     
     //convert HTML into a basic plain-text alternative body
     $mail->msgHTML(file_get_contents("templates". DIRECTORY_SEPARATOR  .$template.'.html'), __DIR__);
