@@ -4,51 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enviar emails</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Enviar Dados</title>
+    <link rel="stylesheet" href="stylesform.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Enviar emails</h1>
+        <h1>Formulário de Envio</h1>
 
-        <form action="emailsAutomatizado.php" method="post">
+        <form action="form.php" method="post">
 
-            <div id="emails-container">
-
-                <div class="caixa-email">
-                    <label for="email1">Insira o primeiro e-mail:</label>
-                    <input type="email" id="email1" name="emails[]" required>
-                    <div class="botoes">
-                        <button class="plus" type="button" onclick="adicionarEmail()">+</button>
-                        <button class="remover" type="button" onclick="removerUltimoEmail()">-</button>
-                    </div>
-
-
-                </div>
-
-
+            <div class="caixa-email">
+                <label for="emailUsuario">Seu Email:</label>
+                <input type="email" id="emailUser" name="emailUser" required>
             </div>
 
-            <div class="template">
-
-                <label for="template">Escolha o template:</label>
-
-                <select id="template" name="template" required>
-                    <option value="template1">Template 1</option>
-                    <option value="template2">Template 2</option>
-                </select>
-
+            <div class="caixa-email">
+                <label for="tokenLogin">Token de Login:</label>
+                <input type="text" id="tokenLogin" name="tokenLogin" required>
             </div>
 
+            <div class="caixa-email">
+                <label for="nomeUsuario">Seu Nome:</label>
+                <input type="text" id="nomeUser" name="nomeUser" required>
+            </div>
 
-            <button type="submit">Enviar Convite</button>
+            <div class="caixa-email">
+                <label for="tituloEmail">Título do Email:</label>
+                <input type="text" id="tituloEmail" name="tituloEmail" required>
+            </div>
+
+         
+            <button type="submit">Enviar Informações</button>
 
         </form>
     </div>
 
     <!-- Referencie seu arquivo JavaScript -->
-    <script src="dinamicas.js"></script>
 </body>
 
 </html>
