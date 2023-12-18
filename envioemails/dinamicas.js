@@ -54,5 +54,114 @@ function removerUltimoEmail() {
     }
 }
 
-   
-   
+function limparECriar() {
+    console.log('entrou')
+    document.cookie = "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    // Redireciona para outra página (substitua 'outra_pagina.html' pelo URL desejado)
+    window.location.href = "../index.html";
+} 
+
+
+function exibirCaixaDeTexto() {
+    document.getElementById('caixaAdicionarTemplate').style.display = 'block';
+}
+
+function adicionarNovoTemplate() {
+    // Obtenha o valor do novo template inserido pelo usuário
+    var novoTemplate = document.getElementById('novoTemplate').value;
+
+    // Crie uma instância do objeto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Configure a solicitação POST para o script PHP
+    xhr.open('POST', 'templates/criatemplate.php', true);
+
+    // Defina o cabeçalho da solicitação
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Defina a função de retorno de chamada quando a solicitação for concluída
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log('Solicitação POST bem-sucedida. Resposta:', xhr.responseText);
+            // Faça algo com a resposta, se necessário
+        } else {
+            console.error('Erro na solicitação POST. Status:', xhr.status);
+        }
+    };
+
+    // Crie os dados a serem enviados no formato apropriado (por exemplo, "parametro1=valor1&parametro2=valor2")
+    var data = 'novoTemplate=' + encodeURIComponent(novoTemplate);
+
+    // Envie a solicitação POST com os dados
+    xhr.send(data);
+
+    // Feche a caixa de texto após a solicitação ser enviada (opcional)
+    document.getElementById('caixaAdicionarTemplate').style.display = 'none';
+}
+
+
+// Função para popular as opções de seleção no HTML
+
+
+// Chamar a função para carregar os templates quando a página é carregada
+document.addEventListener('DOMContentLoaded', function () {
+    carregarTemplates();
+});
+
+
+
+
+// Função para exibir a caixa para adicionar um novo template
+function exibirCaixaAdicionarTemplate() {
+    var caixaAdicionarTemplate = document.getElementById('caixaAdicionarTemplate');
+    caixaAdicionarTemplate.style.display = 'block';
+}
+
+// Função para esconder a caixa para adicionar um novo template
+function esconderCaixaAdicionarTemplate() {
+    var caixaAdicionarTemplate = document.getElementById('caixaAdicionarTemplate');
+    caixaAdicionarTemplate.style.display = 'none';
+}
+
+// Função para carregar a lista de templates
+function carregarTemplates() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "templates/listar_templates.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var templates = JSON.parse(xhr.responseText);
+            popularOpcoesDeSelecao(templates);
+        } else {
+            console.error('Erro ao carregar a lista de templates. Status:', xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+// Função para popular as opções de seleção no HTML
+function popularOpcoesDeSelecao(templates) {
+    var selectElement = document.getElementById('template');
+
+    // Limpar opções existentes
+    selectElement.innerHTML = '';
+
+    // Adicionar uma opção padrão
+    var optionDefault = document.createElement('option');
+    optionDefault.value = ''; // Valor vazio
+    optionDefault.textContent = 'Selecione um template';
+    selectElement.appendChild(optionDefault);
+
+    // Adicionar opções com base nos templates existentes
+    templates.forEach(function (template) {
+        var option = document.createElement('option');
+        option.value = template;
+        option.textContent = template;
+        selectElement.appendChild(option);
+    });
+}
+
+// Chamar a função para carregar os templates quando a página é carregada
+document.addEventListener('DOMContentLoaded', function () {
+    carregarTemplates();
+});

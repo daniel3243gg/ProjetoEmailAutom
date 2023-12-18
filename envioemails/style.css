@@ -88,3 +88,32 @@ button:hover {
     top: 30px;
     background-color: #e74c3c; /* Vermelho */
 }
+.botao-vermelho {
+    background-color: #e74c3c; /* Cor vermelha */
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Adiciona um espaço à esquerda do botão */
+}
+
+.botao-vermelho:hover {
+    background-color: #c0392b; /* Cor vermelha mais escura no hover */
+}
+
+.botao-azul {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Adiciona um espaço à esquerda do botão */
+}
+
+.botao-azul:hover {
+    background-color: #2980b9; /* Azul mais escuro no hover */
+}

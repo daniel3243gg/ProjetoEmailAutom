@@ -23,31 +23,33 @@
                         <button class="plus" type="button" onclick="adicionarEmail()">+</button>
                         <button class="remover" type="button" onclick="removerUltimoEmail()">-</button>
                     </div>
-
-
                 </div>
-
 
             </div>
 
             <div class="template">
-
                 <label for="template">Escolha o template:</label>
-
                 <select id="template" name="template" required>
                     <option value="template1">Template 1</option>
-                    <option value="template2">Template 2</option>
                 </select>
-
+                <button class="botao-azul" type="button" onclick="exibirCaixaDeTexto()">Adicionar Template</button>
+            
+                <!-- Nova caixa de texto para adicionar template (inicialmente oculta) -->
+                <div id="caixaAdicionarTemplate" style="display: none;">
+                    <label for="novoTemplate">Novo Template:</label>
+                    <input type="text" id="novoTemplate" name="novoTemplate" required>
+                    <button type="button" onclick="adicionarNovoTemplate()">Adicionar</button>
+                </div>
             </div>
+            <button type="submit">Enviar emails</button>
 
-
-            <button type="submit">Enviar Convite</button>
+            <!-- Novo botão -->
+            <button class="botao-vermelho" type="button" onclick="limparECriar()">Trocar credenciais</button>
 
         </form>
     </div>
 
-    <!-- Referencie seu arquivo JavaScript -->
+    
     <script src="dinamicas.js"></script>
 </body>
 
