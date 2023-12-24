@@ -12,7 +12,7 @@
     <div class="container">
         <h1>Enviar emails</h1>
 
-        <form action="emailsAutomatizado.php" method="post">
+        <form onsubmit="envio_for()" action="emailsAutomatizado.php" method="post">
 
             <div id="emails-container">
 
@@ -37,7 +37,7 @@
                 <!-- Nova caixa de texto para adicionar template (inicialmente oculta) -->
                 <div id="caixaAdicionarTemplate" style="display: none;">
                     <label for="novoTemplate">Novo Template:</label>
-                    <input type="text" id="novoTemplate" name="novoTemplate" required>
+                    <input type="text" id="novoTemplate" name="novoTemplate">
                     <button type="button" onclick="adicionarNovoTemplate()">Adicionar</button>
                 </div>
             </div>

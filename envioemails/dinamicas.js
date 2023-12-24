@@ -66,10 +66,13 @@ function limparECriar() {
 function exibirCaixaDeTexto() {
     document.getElementById('caixaAdicionarTemplate').style.display = 'block';
 }
-
+function envio_for(){
+    alert("Formulário enviado!");
+}
 function adicionarNovoTemplate() {
     // Obtenha o valor do novo template inserido pelo usuário
     var novoTemplate = document.getElementById('novoTemplate').value;
+   
 
     // Crie uma instância do objeto XMLHttpRequest
     var xhr = new XMLHttpRequest();
@@ -98,6 +101,7 @@ function adicionarNovoTemplate() {
 
     // Feche a caixa de texto após a solicitação ser enviada (opcional)
     document.getElementById('caixaAdicionarTemplate').style.display = 'none';
+
 }
 
 

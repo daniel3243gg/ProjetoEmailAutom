@@ -1,4 +1,5 @@
 <?php
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     $texto = htmlspecialchars($_POST["novoTemplate"]);
@@ -7,18 +8,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cont = $_COOKIE["templatescriados"];
         $cont = preg_replace("/[^a-zA-Z0-9]+/", "", $cont); 
         $cont++;
-        setcookie("templatescriados", $cont, time() + 360000, "/");
+        setcookie("templatescriados", $cont, time() + 9999, "/");
     }else{
         $cont = 1;
-        setcookie("templatescriados", $cont, time() + 360000, "/");
+        setcookie("templatescriados", $cont, time() + 9999, "/");
     }
 
     $caminhoArquivo = "template{$cont}.html";
-    
+    var_dump($caminhoArquivo);
     $arquivo = fopen($caminhoArquivo, "w");
 
     if ($arquivo) {
         // Escreve o texto no arquivo
+        fwrite($arquivo, "\xEF\xBB\xBF");
         fwrite($arquivo, $texto);
 
         // Fecha o arquivo
