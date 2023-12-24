@@ -1,9 +1,12 @@
 function verificarCookies() {
 
-    if (document.cookie.includes("login") && document.cookie.includes("outra_cookie")) {
+    if (document.cookie.includes("login")) {
        
         window.location.href = "form.php";
     }
+
+    console.log('entrei 23')
+
 }
 
 

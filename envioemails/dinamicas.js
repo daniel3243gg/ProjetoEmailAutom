@@ -67,23 +67,19 @@ function exibirCaixaDeTexto() {
     document.getElementById('caixaAdicionarTemplate').style.display = 'block';
 }
 function envio_for(){
-    alert("Formulário enviado!");
+    
 }
+
+
+
 function adicionarNovoTemplate() {
-    // Obtenha o valor do novo template inserido pelo usuário
     var novoTemplate = document.getElementById('novoTemplate').value;
-   
-
-    // Crie uma instância do objeto XMLHttpRequest
     var xhr = new XMLHttpRequest();
-
-    // Configure a solicitação POST para o script PHP
     xhr.open('POST', 'templates/criatemplate.php', true);
+    
+    // Use 'application/x-www-form-urlencoded' como Content-Type
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
 
-    // Defina o cabeçalho da solicitação
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    // Defina a função de retorno de chamada quando a solicitação for concluída
     xhr.onload = function () {
         if (xhr.status === 200) {
             console.log('Solicitação POST bem-sucedida. Resposta:', xhr.responseText);
@@ -93,25 +89,13 @@ function adicionarNovoTemplate() {
         }
     };
 
-    // Crie os dados a serem enviados no formato apropriado (por exemplo, "parametro1=valor1&parametro2=valor2")
     var data = 'novoTemplate=' + encodeURIComponent(novoTemplate);
-
-    // Envie a solicitação POST com os dados
     xhr.send(data);
 
     // Feche a caixa de texto após a solicitação ser enviada (opcional)
     document.getElementById('caixaAdicionarTemplate').style.display = 'none';
-
 }
 
-
-// Função para popular as opções de seleção no HTML
-
-
-// Chamar a função para carregar os templates quando a página é carregada
-document.addEventListener('DOMContentLoaded', function () {
-    carregarTemplates();
-});
 
 
 

@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $mail->AltBody = 'html n';
     
-    
+   
     
     $mail->CharSet = 'UTF-8';
     $mail->Encoding = 'base64';
@@ -61,10 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if (!$mail->send()) {
 
-            $dadosDoPHP = array("resposta" => false );
+            $dadosDoPHP = array("resposta" => false );  
             $dadosJS = json_encode($dadosDoPHP);
           
-            //echo 'Mailer Error: ' . $mail->ErrorInfo;
+         
         } else {
             $dadosDoPHP = array("resposta" => true );
             $dadosJS = json_encode($dadosDoPHP);
@@ -76,14 +76,13 @@ session_abort();
 ?>
 <script>
     var dadosJS = <?php echo $dadosJS; ?>;
-    if(dadosJS == false){
-        alert('ERRO NO ENVIO');
+    if(dadosJS['resposta'] == true){
+        alert('SUCESSO NO ENVIO');
         // Redireciona para a página index.html
         window.location.href = 'index.html';
 
     }else{
-        alert('ENVIADO COM SUCESSO!')
-        window.location.href = 'index.html';
-
+        alert('ERRO NO ENVIO!')
+       // window.location.href = 'index.html';
     }
 </script>

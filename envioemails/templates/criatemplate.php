@@ -2,26 +2,27 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
-    $texto = htmlspecialchars($_POST["novoTemplate"]);
+    $texto = $_POST["novoTemplate"];
 
-    if(isset($_COOKIE["templatescriados"])){
+    if (isset($_COOKIE["templatescriados"])) {
         $cont = $_COOKIE["templatescriados"];
         $cont = preg_replace("/[^a-zA-Z0-9]+/", "", $cont); 
         $cont++;
         setcookie("templatescriados", $cont, time() + 9999, "/");
-    }else{
+    } else {
         $cont = 1;
         setcookie("templatescriados", $cont, time() + 9999, "/");
     }
 
     $caminhoArquivo = "template{$cont}.html";
-    var_dump($caminhoArquivo);
-    $arquivo = fopen($caminhoArquivo, "w");
+    
+    $arquivo = fopen($caminhoArquivo, "wb");
 
     if ($arquivo) {
-        // Escreve o texto no arquivo
-        fwrite($arquivo, "\xEF\xBB\xBF");
-        fwrite($arquivo, $texto);
+
+        $textoUtf8 = mb_convert_encoding($texto, 'UTF-8');
+        // Escreve o texto no arquivo usando utf8_encode
+        fwrite($arquivo, $textoUtf8);
 
         // Fecha o arquivo
         fclose($arquivo);
